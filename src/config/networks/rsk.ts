@@ -1,4 +1,4 @@
-import EtherLogo from 'src/config/assets/token_eth.svg'
+import RbtcLogo from 'src/config/assets/token_rbtc.png'
 import {
   EnvironmentSettings,
   ETHEREUM_LAYER,
@@ -11,7 +11,7 @@ import { WALLETS } from 'src/config/networks/network.d'
 const baseConfig: EnvironmentSettings = {
   clientGatewayUrl: 'http://ec2-3-69-52-53.eu-central-1.compute.amazonaws.com/v1',
   txServiceUrl: 'http://localhost:8888/api/v1',
-  gasPrice: 0.06,
+  gasPrice: 60000000,
   safeAppsRpcServiceUrl: 'https://public-node.rsk.co',
   rpcServiceUrl: 'https://public-node.rsk.co',
   networkExplorerName: 'RSK Explorer',
@@ -27,13 +27,13 @@ const rsk: NetworkConfig = {
     production: {
       ...baseConfig,
       clientGatewayUrl: 'http://ec2-3-69-52-53.eu-central-1.compute.amazonaws.com/v1',
-      txServiceUrl: 'http://localhost:8888/api/v1',
+      txServiceUrl: 'https://safe-tx.ngrok.io/api/v1',
     },
   },
   network: {
     id: ETHEREUM_NETWORK.RSK,
     shortName: SHORT_NAME.RSK,
-    backgroundColor: '#E8E7E6',
+    backgroundColor: '#8EE7E6',
     textColor: '#001428',
     label: 'RSK',
     ethereumLayer: ETHEREUM_LAYER.L2,
@@ -42,7 +42,7 @@ const rsk: NetworkConfig = {
       name: 'RBTC',
       symbol: 'RBTC',
       decimals: 18,
-      logoUri: EtherLogo,
+      logoUri: RbtcLogo,
     },
   },
   disabledWallets: [WALLETS.LATTICE],

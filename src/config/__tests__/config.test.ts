@@ -1,10 +1,10 @@
 import { ETHEREUM_NETWORK } from 'src/config/networks/network.d'
 import { default as networks } from 'src/config/networks'
 
-const { mainnet, xdai } = networks
+const { mainnet, rsk } = networks
 
 const mainnetShortName = mainnet.network.shortName
-const xDaiShortName = xdai.network.shortName
+const rskShortName = rsk.network.shortName
 
 const validSafeAddress = '0x57CB13cbef735FbDD65f5f2866638c546464E45F'
 
@@ -88,15 +88,15 @@ describe('Config Services', () => {
     expect(TX_SERVICE_URL).toBe(txServiceUrl)
   })
 
-  it(`should load 'xdai.production' network config`, () => {
+  it(`should load 'rsk.production' network config`, () => {
     // Given
     jest.mock('src/utils/constants', () => ({
       NODE_ENV: 'production',
       APP_ENV: 'production',
     }))
-    window.history.pushState(null, '', `${window.location.origin}/app/${xDaiShortName}:${validSafeAddress}`)
+    window.history.pushState(null, '', `${window.location.origin}/app/${rskShortName}:${validSafeAddress}`)
     const { getTxServiceUrl } = require('src/config')
-    const TX_SERVICE_URL = xdai.environment.production.txServiceUrl
+    const TX_SERVICE_URL = rsk.environment.production.txServiceUrl
 
     // When
     const txServiceUrl = getTxServiceUrl()
@@ -104,14 +104,14 @@ describe('Config Services', () => {
     expect(TX_SERVICE_URL).toBe(txServiceUrl)
   })
 
-  it(`should default to 'xdai.dev' network config if no environment is found`, () => {
+  it(`should default to 'rsk.dev' network config if no environment is found`, () => {
     // Given
     jest.mock('src/utils/constants', () => ({
       NODE_ENV: '',
     }))
-    window.history.pushState(null, '', `${window.location.origin}/app/${xDaiShortName}:${validSafeAddress}`)
+    window.history.pushState(null, '', `${window.location.origin}/app/${rskShortName}:${validSafeAddress}`)
     const { getTxServiceUrl } = require('src/config')
-    const TX_SERVICE_URL = xdai.environment.dev?.txServiceUrl
+    const TX_SERVICE_URL = rsk.environment.dev?.txServiceUrl
 
     // When
     const txServiceUrl = getTxServiceUrl()

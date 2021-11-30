@@ -92,7 +92,7 @@ const BaseAddressBookInput = ({
   ) => {
     switch (reason) {
       case 'input': {
-        const normalizedValue = trimSpaces(value)
+        const normalizedValue = trimSpaces(value).toLowerCase()
 
         if (!normalizedValue) {
           break

@@ -81,7 +81,7 @@ const AddressInput = ({
       />
       <OnChange name={name}>
         {async (value: string) => {
-          const address = trimSpaces(value)
+          const address = trimSpaces(value).toLowerCase()
           setCurrentInput(address)
 
           // A crypto domain name
